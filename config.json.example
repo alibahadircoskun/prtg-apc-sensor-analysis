@@ -1,0 +1,13 @@
+{
+  "prtg": {
+    "url": "https://your-prtg-server.com",
+    "username": "your_username",
+    "password": "your_password"
+  },
+  "sensors": {
+    "12345": "APC Sensor - Server Room A (AP9335T)",
+    "12346": "APC Sensor - Server Room B (AP9335T)",
+    "12347": "APC NetBotz - Data Center Aisle Hot Spot"
+  },
+  "days_to_analyze": 2
+}
