@@ -1,4 +1,4 @@
-# prtg_report.py - Fetch PRTG sensor data and generate Excel report in one step
+# prtg_report.py 
 import requests
 import pandas as pd
 import numpy as np
@@ -18,9 +18,7 @@ except ImportError:
     print("✗ openpyxl is required. Install it with: pip install openpyxl")
     sys.exit(1)
 
-# ============================================================
 # LOAD CONFIGURATION FROM config.json
-# ============================================================
 
 CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
 
@@ -35,9 +33,7 @@ PRTG_CONFIG = config['prtg']
 SENSORS = {int(k): v for k, v in config['sensors'].items()}
 DAYS_TO_ANALYZE = config.get('days_to_analyze', 2)
 
-# ============================================================
 # EXCEL STYLES
-# ============================================================
 
 BG_DARK = '1a1a2e'
 BG_CARD = '16213e'
@@ -80,9 +76,7 @@ def get_stability(std):
     else:
         return "HIGHLY VARIABLE", RED
 
-# ============================================================
 # PRTG DATA FETCHING
-# ============================================================
 
 def fetch_sensor_history(sensor_id):
     """Fetch historical data from PRTG"""
@@ -195,9 +189,8 @@ def compute_stats(df):
         'p99': temps.quantile(0.99),
     }
 
-# ============================================================
+
 # EXCEL REPORT GENERATION
-# ============================================================
 
 def write_summary_sheet(ws, sensor_results):
     """Sheet 1: Summary table of all sensors"""
@@ -438,9 +431,7 @@ def write_raw_sheets(writer, sensor_results):
                 cell.alignment = CENTER
                 cell.border = THIN_BORDER
 
-# ============================================================
 # MAIN
-# ============================================================
 
 def main():
     print("="*70)
