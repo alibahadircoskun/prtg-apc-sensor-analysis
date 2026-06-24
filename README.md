@@ -1,6 +1,12 @@
 # PRTG APC Sensor Analysis
 
-Excel report generator for APC environmental sensor data from PRTG Network Monitor. Creates multi-sheet reports with statistical analysis, hourly/daily patterns, and threshold recommendations for data center temperature monitoring.
+Python reporting tool for turning raw PRTG temperature sensor history into a clean Excel report for operations and capacity planning. It is aimed at APC and NetBotz-style environmental sensors used in server rooms and data centers.
+
+## What this proves
+
+- Pull monitoring data from a production-style API and turn it into something operators can act on
+- Build practical reporting for baseline analysis, threshold tuning, and anomaly review
+- Work in the overlap between monitoring, scripting, and infrastructure operations
 
 ## Features
 
@@ -41,7 +47,7 @@ Ideal for data center operators using APC environmental monitoring equipment who
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/prtg-apc-sensor-analysis.git
+git clone git@github.com:alibahadircoskun/prtg-apc-sensor-analysis.git
 cd prtg-apc-sensor-analysis
 ```
 
@@ -59,7 +65,7 @@ cp config.json.example config.json
 ```json
 {
   "prtg": {
-    "url": "https://your-prtg-server.com",
+    "url": "https://prtg.example.com",
     "username": "your_username",
     "password": "your_password"
   },
@@ -98,6 +104,15 @@ python prtg_report.py
 ```
 
 Output: `sensor_report_{timestamp}.xlsx`
+
+## Typical use case
+
+This is meant for situations where the monitoring system already has the raw temperature history, but the team still needs a usable report for decisions such as:
+
+- choosing better warning and error thresholds
+- spotting hot aisles or unstable cooling zones
+- documenting environmental baselines before hardware changes
+- sharing a readable summary with operations or facilities teams
 
 ### Sample Output
 
